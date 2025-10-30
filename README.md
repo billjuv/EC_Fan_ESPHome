@@ -9,3 +9,5 @@ ESP32/WiFi control of 10V EC Fan (i.e. AC Infinity)
 Body  
   
 ~~Body Strikethrough ~~  
+
+https://github.com/billjuv/EC_Fan_ESPHome/blob/main/README.md

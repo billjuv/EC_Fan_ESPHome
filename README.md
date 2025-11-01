@@ -2,7 +2,7 @@
 
 This project allows for ESP32/WiFi control of 10V EC Fans which use USB-C type cables (i.e. AC Infinity ('AIS') or Vivosun ('SGS')). The PWM signal (duty cycle) is sent to the fan to control the fan speed and, if available on the fan, the tach speed (RPM) is returned. The ESP32 microcontroller is powered directly from the 10 volts supplied by the fan through the USB cable and communicates to an MQTT broker (local or cloud) through WiFi. No other cabling is needed.
 
-This was designed for use in a mushroom grow operation in shipping containers where WiFi communication to the controller was desired over long cable runs. The controller is a Raspberry Pi 4 running Mycodo, Mosquitto for MQTT, and NodeRed. Fan control is done through a NodeRed Dashboard (2.0) though could also be done through Mycodo.
+This was designed for use in a mushroom grow operation in shipping containers where WiFi communication to the controller was desired instead of long cable runs. The controller is a Raspberry Pi 4 running Mycodo, Mosquitto for MQTT, and NodeRed. Fan control is done through a NodeRed Dashboard (2.0) though could also be done through Mycodo.
 
 ### Parts Used:
 - Custom PCB board with logic level shift circuitry for safe GPIO voltages

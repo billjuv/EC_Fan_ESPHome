@@ -7,7 +7,7 @@ This was designed for use in a mushroom grow operation in shipping containers wh
 ### Parts Used:
 - Custom PCB board with logic level shift circuitry for safe GPIO voltages
 - ESP32 DevKit v1 board (chosen for stronger WiFi than C3)
-- Power Buck converter - 10v in, 5v out to power ESP32 (mounted on bottom of board)
+- MP1584EN DC-DC buck converter - 10v in, set to 5v out - to power ESP32 (mounted on bottom of board)
 - USB-C header cable (box mounted)
 - Custom 3d printed enclosure
 
@@ -19,6 +19,7 @@ This was designed for use in a mushroom grow operation in shipping containers wh
 - Example NodeRed flow information
   
 
+# As of 11/25 still need ESPHome 12-2024 or older and the 'arduino' framework to work
   
 Body  
   

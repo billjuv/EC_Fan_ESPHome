@@ -1,4 +1,4 @@
-# Sample yaml for PWM control of EC fan with tach
+# Sample yaml for PWM control of EC fan with tach - includes rssi and uptime
 # Need ESPHome 12-2024 or older for the PWM Fan - and the 'arduino' framework to work (11/25)
 
 substitutions:
@@ -75,8 +75,8 @@ sensor:
       - multiply: 0.5 # two pulses per revolution
     count_mode:
       rising_edge: INCREMENT
-      falling_edge: DISABLE
-    update_interval:10s
+      falling_edge: DISABLE 
+    update_interval: 10s
     on_value:
       then:
         - mqtt.publish:
@@ -113,3 +113,4 @@ text_sensor:
       char buf[32];
       sprintf(buf, "%dd %dh %dm %ds", d, h, m, s);
       return std::string(buf);
+

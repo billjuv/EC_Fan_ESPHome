@@ -18,6 +18,8 @@ This was designed for use in a mushroom grow operation in shipping containers wh
 - Links to parts
 - Example NodeRed flow information
   
+<img src=Attachments/IMG_1472.jpg width="50%"/>
+
 <img src=Attachments/IMG_1470.jpg width="50%"/>
 
 <img src=Attachments/IMG_1486.jpg width="50%"/>

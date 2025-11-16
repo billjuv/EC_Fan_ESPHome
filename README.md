@@ -18,8 +18,23 @@ This was designed for use in a mushroom grow operation in shipping containers wh
 - Links to parts
 - Example NodeRed flow information
   
+<img src=Attachments/IMG_1470.jpg width="50%"/>
 
-# As of 11/25 still need ESPHome 12-2024 or older and the 'arduino' framework to work
+<img src=Attachments/IMG_1486.jpg width="50%"/>
+
+<img src=Attachments/IMG_1493.jpg width="50%"/>
+
+<img src=Attachments/IMG_1494.jpg width="50%"/>
+
+
+[Amazon link to cables below][def]
+
+<img src=Attachments/cable.jpg width="50%"/>
+<img src=Attachments/IMG_4349.jpg width="50%"/> 
+Hole sizes for above cable mount
+
+
+### As of 11/25 still need ESPHome 12-2024 or older and the 'arduino' framework to work
   
 
 https://github.com/billjuv/EC_Fan_ESPHome/blob/main/README.md

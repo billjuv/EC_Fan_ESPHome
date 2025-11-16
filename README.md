@@ -28,10 +28,11 @@ This was designed for use in a mushroom grow operation in shipping containers wh
 
 <img src=Attachments/IMG_1494.jpg width="50%"/>
 
+<img src=Attachments/IMG_4527.jpg width="50%"/>
 
 [Amazon link to cables below][def]
-
 <img src=Attachments/cable.jpg width="50%"/>
+
 <img src=Attachments/IMG_4349.jpg width="50%"/> 
 Hole sizes for above cable mount
 
@@ -40,3 +41,5 @@ Hole sizes for above cable mount
   
 
 https://github.com/billjuv/EC_Fan_ESPHome/blob/main/README.md
+
+[def]: https://www.amazon.com/Female-Waterproof-Terminal-Pigtail-Extension/dp/B0D7CN4BTV/ref=sr_1_1?crid=22DIPVZJ6NLNA&dib=eyJ2IjoiMSJ9.5A5gh8wlE1dA5xzyWRfnF6wJ0fd9cFGKaGoMoL32RONrxG9_nN8LmJ9rJli3ujotLw90tzZNpYxllE3eMCpda7KoQPOh_-vPp3rROVUxTw11IfYGYRkTlLA7TaCoP3jR.uXNtln_9dJgcMFb5AaFasS38uiNJQxI2SMAjDUyGoKk&dib_tag=se&keywords=xiwai%2B5pcs%2FSet&qid=1761968034&sprefix=xiwai%2B5pcs%2Fset%2Caps%2C101&sr=8-1&th=1

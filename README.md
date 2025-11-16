@@ -17,7 +17,8 @@ This was designed for use in a mushroom grow operation in shipping containers wh
 - 3d print files for the box
 - Links to parts
 - Example NodeRed flow information
-  
+ ### As of 11/25 still need ESPHome 12-2024 or older and the 'arduino' framework to work
+   
 <img src=Attachments/IMG_1472.jpg width="50%"/>
 
 <img src=Attachments/IMG_1470.jpg width="50%"/>
@@ -30,18 +31,16 @@ This was designed for use in a mushroom grow operation in shipping containers wh
 
 <img src=Attachments/IMG_4527.jpeg width="50%"/>
 
-<img src=Attachments/IMG_4529.jpeg width="50%"/>
-<img src=Attachments/IMG_4531.jpeg width="50%"/>
-
 [Amazon link to cables below][def]
+
 <img src=Attachments/cable.jpg width="50%"/>
 
 <img src=Attachments/IMG_4349.jpg width="50%"/> 
 Hole sizes for above cable mount
 
-
-### As of 11/25 still need ESPHome 12-2024 or older and the 'arduino' framework to work
-  
+## NodeRed (EC_Fan.json in NodeRed folder)
+<img src=Attachments/IMG_4529.jpeg width="50%"/>
+<img src=Attachments/IMG_4531.jpeg width="50%"/>
 
 https://github.com/billjuv/EC_Fan_ESPHome/blob/main/README.md
 

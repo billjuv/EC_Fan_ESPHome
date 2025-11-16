@@ -21,8 +21,5 @@ This was designed for use in a mushroom grow operation in shipping containers wh
 
 # As of 11/25 still need ESPHome 12-2024 or older and the 'arduino' framework to work
   
-Body  
-  
-~~Body Strikethrough ~~  
 
 https://github.com/billjuv/EC_Fan_ESPHome/blob/main/README.md

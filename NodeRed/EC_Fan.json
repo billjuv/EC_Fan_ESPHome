@@ -1,0 +1,733 @@
+[
+    {
+        "id": "6beef9b705494822",
+        "type": "group",
+        "z": "792ae5b2f20bb202",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "b22067a8a81bbd94",
+            "ca1095fa4a56db34",
+            "695b1046924163c0",
+            "e39eec5faeeea12c",
+            "b252760236f31671",
+            "913b9047be76f403",
+            "57b6373ed38c4eba",
+            "ada11263e0e2ec17",
+            "be9c5ecd59235b5f",
+            "28d4db9a873f4404",
+            "2a7283fea7c555c9",
+            "8968ce5aba4ad374",
+            "95e9c2bbb53b938a",
+            "ee8a4153da4f4917",
+            "7dc41ab4c99a6774",
+            "7298a1e9f045c74b",
+            "de23415e56e3ac5b",
+            "926ab48aee9e9505",
+            "2b493c8a297d9ec1",
+            "2f87e2669c5cad69",
+            "626d6b3b0f551d69",
+            "bf6870fb3f427e78",
+            "581abfbd365af4fc"
+        ],
+        "x": 54,
+        "y": 159,
+        "w": 792,
+        "h": 602
+    },
+    {
+        "id": "b22067a8a81bbd94",
+        "type": "function",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "flow.set('lastSpeed1'",
+        "func": "// msg.payload = speed (0-max)\nvar speed = Number(msg.payload);\n\n// Save last non-zero speed (>1)\nif (speed > 1) {\n    flow.set('lastSpeed1', speed);\n}\n\n// Update switch state (>1 = ON)\nflow.set('switchState1', speed > 1 ? \"ON\" : \"OFF\");\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 320,
+        "wires": [
+            [
+                "ca1095fa4a56db34",
+                "be9c5ecd59235b5f",
+                "7dc41ab4c99a6774"
+            ]
+        ]
+    },
+    {
+        "id": "ca1095fa4a56db34",
+        "type": "mqtt out",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "MQTT Speed Command",
+        "topic": "32-c-test1/fan/pwm_fan/speed_level/command",
+        "qos": "",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 690,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "695b1046924163c0",
+        "type": "function",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "Update Switch State",
+        "func": "var speed = Number(msg.payload);\nmsg.payload = (speed > 1 ? \"ON\" : \"OFF\");\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 380,
+        "wires": [
+            [
+                "ee8a4153da4f4917"
+            ]
+        ]
+    },
+    {
+        "id": "e39eec5faeeea12c",
+        "type": "mqtt in",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "RPM",
+        "topic": "32-c-test1/RPM",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 130,
+        "y": 540,
+        "wires": [
+            [
+                "de23415e56e3ac5b"
+            ]
+        ]
+    },
+    {
+        "id": "b252760236f31671",
+        "type": "mqtt in",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "Online Status",
+        "topic": "32-c-test1/status",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 150,
+        "y": 600,
+        "wires": [
+            [
+                "2a7283fea7c555c9"
+            ]
+        ]
+    },
+    {
+        "id": "913b9047be76f403",
+        "type": "mqtt in",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "Speed",
+        "topic": "32-c-test1/fan/pwm_fan/speed_level/state",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 130,
+        "y": 480,
+        "wires": [
+            [
+                "695b1046924163c0",
+                "be9c5ecd59235b5f",
+                "7298a1e9f045c74b"
+            ]
+        ]
+    },
+    {
+        "id": "57b6373ed38c4eba",
+        "type": "comment",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "Function Flow Notes (ReadMe)",
+        "info": "Flow Notes (Fan Control Subflow)\n--------------------------------\n- Speed > 1 = Fan ON\n- Speed = 0 (or 1 due to ESP quirk) = Fan OFF\n- Mycodo publishes fan speed → keeps dashboard synced\n- Output #2 loops back into dashboard switch to mirror state\n- ⚠️ Switch node option \"Pass through messages\" MUST be OFF\n   → Prevents infinite feedback loop when updating state\n   2nd flow.set function from MQTT Speed updates speed context\n   without causing feedback loop. Maintains speed through\n   NodeRed 'deploy when spped set through Mycodo.\n- MQTT topics use fixed fan_id inside subflow (can’t inherit)",
+        "x": 650,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "ada11263e0e2ec17",
+        "type": "ui-slider",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "group": "67ae9039a90a9f63",
+        "name": "32-c-test1 - Fan Slider",
+        "label": "Speed",
+        "order": 5,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "outs": "end",
+        "topic": "speed",
+        "topicType": "str",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 200,
+        "y": 320,
+        "wires": [
+            [
+                "b22067a8a81bbd94"
+            ]
+        ]
+    },
+    {
+        "id": "be9c5ecd59235b5f",
+        "type": "ui-text",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "group": "67ae9039a90a9f63",
+        "order": 6,
+        "width": "3",
+        "height": "1",
+        "name": "32-c-test1 - Duty Cycle",
+        "label": "Test1 Duty Cycle",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 710,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "28d4db9a873f4404",
+        "type": "ui-text",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "group": "67ae9039a90a9f63",
+        "order": 2,
+        "width": "3",
+        "height": "1",
+        "name": "32-c-test1 - RPM",
+        "label": "Test1 RPM",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 690,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "2a7283fea7c555c9",
+        "type": "ui-led",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "32-c-test1 - Fan Status",
+        "group": "67ae9039a90a9f63",
+        "order": 4,
+        "width": "3",
+        "height": "1",
+        "label": "Online (70:e8)",
+        "labelPlacement": "left",
+        "labelAlignment": "flex-end",
+        "states": [
+            {
+                "value": "offline",
+                "valueType": "str",
+                "color": "#919191"
+            },
+            {
+                "value": "online",
+                "valueType": "str",
+                "color": "#00f900"
+            }
+        ],
+        "shape": "circle",
+        "showBorder": false,
+        "showGlow": false,
+        "x": 710,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "8968ce5aba4ad374",
+        "type": "function",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "Set ON/OFF",
+        "func": "// msg.payload = \"ON\" or \"OFF\"\nvar lastSpeed1 = flow.get('lastSpeed1') || env.get('max_speed');\n\nif (msg.payload === \"ON\") {\n    msg.payload = lastSpeed1;\n} else {\n    msg.payload = 0;\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 260,
+        "wires": [
+            [
+                "95e9c2bbb53b938a"
+            ]
+        ]
+    },
+    {
+        "id": "95e9c2bbb53b938a",
+        "type": "mqtt out",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "MQTT ON/OFF",
+        "topic": "32-c-test1/fan/pwm_fan/speed_level/command",
+        "qos": "",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker",
+        "x": 680,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ee8a4153da4f4917",
+        "type": "ui-switch",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "32-c-test1- On/Off",
+        "label": "Off/On ",
+        "group": "67ae9039a90a9f63",
+        "order": 3,
+        "width": "3",
+        "height": "1",
+        "passthru": false,
+        "decouple": false,
+        "topic": "onoff",
+        "topicType": "str",
+        "className": "",
+        "layout": "row-left",
+        "clickableArea": "switch",
+        "onvalue": "ON",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "OFF",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 230,
+        "y": 260,
+        "wires": [
+            [
+                "8968ce5aba4ad374"
+            ]
+        ]
+    },
+    {
+        "id": "7dc41ab4c99a6774",
+        "type": "debug",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "debug 368",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "7298a1e9f045c74b",
+        "type": "function",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "flow.set('lastSpeed1'",
+        "func": "// msg.payload = speed (0-max)\nvar speed = Number(msg.payload);\n\n// Save last non-zero speed (>1)\nif (speed > 1) {\n    flow.set('lastSpeed1', speed);\n}\n\n// Update switch state (>1 = ON)\nflow.set('switchState1', speed > 1 ? \"ON\" : \"OFF\");\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 440,
+        "wires": [
+            [
+                "ada11263e0e2ec17"
+            ]
+        ]
+    },
+    {
+        "id": "de23415e56e3ac5b",
+        "type": "change",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "round to 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$round(payload, 0)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 540,
+        "wires": [
+            [
+                "28d4db9a873f4404"
+            ]
+        ]
+    },
+    {
+        "id": "926ab48aee9e9505",
+        "type": "mqtt in",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "RSSI",
+        "topic": "32-c-test1/rssi",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "mqtt_broker",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 130,
+        "y": 660,
+        "wires": [
+            [
+                "2b493c8a297d9ec1",
+                "626d6b3b0f551d69",
+                "581abfbd365af4fc"
+            ]
+        ]
+    },
+    {
+        "id": "2b493c8a297d9ec1",
+        "type": "ui-text",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "group": "67ae9039a90a9f63",
+        "order": 7,
+        "width": "3",
+        "height": "1",
+        "name": "32-c-test1 - RSSI",
+        "label": "RSSI",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 690,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "2f87e2669c5cad69",
+        "type": "ui-text",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "group": "67ae9039a90a9f63",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "name": "32-c-test1 - ESP32-C3 Test Box",
+        "label": "ESP32-C3 Test Box (Vivosun)",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 270,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "626d6b3b0f551d69",
+        "type": "debug",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "debug 385",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "bf6870fb3f427e78",
+        "type": "ui-chart",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "group": "67ae9039a90a9f63",
+        "name": "32-c-test1 - RSSI",
+        "label": "RSSI - \"32-c-test1\"",
+        "order": 8,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "payload.x",
+        "xAxisPropertyType": "msg",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "rssi",
+        "yAxisProperty": "payload.y",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "line",
+        "pointRadius": "6",
+        "showLegend": false,
+        "removeOlder": "2",
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": "4",
+        "className": "",
+        "interpolation": "linear",
+        "x": 690,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "581abfbd365af4fc",
+        "type": "function",
+        "z": "792ae5b2f20bb202",
+        "g": "6beef9b705494822",
+        "name": "convert string to number",
+        "func": "msg.payload = {\n    x: Date.now(),\n    y: parseFloat(msg.payload)  // convert string to number\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 680,
+        "wires": [
+            [
+                "bf6870fb3f427e78"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_broker",
+        "type": "mqtt-broker",
+        "name": "HomeMycodo_MQTT",
+        "broker": "homemycodo.local",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "67ae9039a90a9f63",
+        "type": "ui-group",
+        "name": "EC Fans",
+        "page": "e9f46447c605b116",
+        "width": "6",
+        "height": "1",
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "e9f46447c605b116",
+        "type": "ui-page",
+        "name": "New ESP32 Box Tests",
+        "ui": "b19902285c24f724",
+        "path": "/page2",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "cbb09358a5c9450b",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "6"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "b19902285c24f724",
+        "type": "ui-base",
+        "name": "Home Mycodo Dashboard 2.0",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": true,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": false,
+        "notificationDisplayTime": "5",
+        "showDisconnectNotification": false,
+        "allowInstall": true
+    },
+    {
+        "id": "cbb09358a5c9450b",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px",
+            "density": "default"
+        }
+    }
+]

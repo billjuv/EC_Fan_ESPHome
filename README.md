@@ -28,7 +28,10 @@ This was designed for use in a mushroom grow operation in shipping containers wh
 
 <img src=Attachments/IMG_1494.jpg width="50%"/>
 
-<img src=Attachments/IMG_4527.jpg width="50%"/>
+<img src=Attachments/IMG_4527.jpeg width="50%"/>
+
+<img src=Attachments/IMG_4529.jpeg width="50%"/>
+<img src=Attachments/IMG_4531.jpeg width="50%"/>
 
 [Amazon link to cables below][def]
 <img src=Attachments/cable.jpg width="50%"/>

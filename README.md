@@ -1,24 +1,41 @@
 # EC Fan Control using ESP32, ESPHome and MQTT
 
-This project allows for ESP32/WiFi control of 10V EC Fans which use USB-C type cables (i.e. AC Infinity ('AIS') or Vivosun ('SGS')). The PWM signal (duty cycle) is sent to the fan to control the fan speed and, if available on the fan, the tach speed (RPM) is returned. The ESP32 microcontroller is powered directly from the 10 volts supplied by the fan through the USB cable and communicates to an MQTT broker (local or cloud) through WiFi. No other cabling is needed.
+This project enables ESP32/WiFi control of 10V EC fans that use USB-C type cables, such as those made by AC Infinity (AIS) or Vivosun (SGS). A PWM signal (duty cycle) is sent to the fan to control speed, and if supported by the fan, the tach signal (RPM) is returned.
 
-This was designed for use in a mushroom grow operation in shipping containers where WiFi communication to the controller was desired instead of long cable runs. The controller is a Raspberry Pi 4 running Mycodo, Mosquitto for MQTT, and NodeRed. Fan control is done through a NodeRed Dashboard (2.0) though could also be done through Mycodo.
+The ESP32 is powered directly from the 10V supplied by the fan through the USB-C cable and communicates with an MQTT broker via WiFi — no additional wiring is needed.
 
-### Parts Used:
-- Custom PCB board with logic level shift circuitry for safe GPIO voltages
-- ESP32 DevKit v1 board (chosen for stronger WiFi than C3)
-- MP1584EN DC-DC buck converter - 10v in, set to 5v out - to power ESP32 (mounted on bottom of board)
-- USB-C header cable (box mounted)
-- Custom 3d printed enclosure
+This was designed for a mushroom grow operation in shipping containers where WiFi control was preferred over long cable runs. The controller is a Raspberry Pi 4 running Mycodo, Mosquitto (MQTT broker), and Node-RED. Fan control is handled through a Node-RED Dashboard 2.0, though Mycodo could also be used.
 
-### Included in this project:
-- Example ESPHome YAML code
-- Gerber files for PCB board
-- 3d print files for the box
+---
+
+> ⚠️ **Compatibility Note:** As of November 2024, this project requires **ESPHome 2024.12 or older** and the **Arduino framework**. It is not yet compatible with newer ESPHome versions.
+
+---
+
+## What's Included
+
+- ESPHome YAML configuration (example)
+- Gerber files for the custom PCB
+- 3D print files for the enclosure
 - Links to parts
-- Example NodeRed flow information
- ### As of 11/25 still need ESPHome 12-2024 or older and the 'arduino' framework to work
-   
+- Node-RED flow (EC_Fan.json in the NodeRed folder)
+
+---
+
+## Parts Used
+
+| Part | Notes |
+|------|-------|
+| Custom PCB | Includes logic level shift circuitry for safe GPIO voltages |
+| ESP32 DevKit v1 | Chosen for stronger WiFi than the C3 variant |
+| MP1584EN DC-DC buck converter | Steps 10V down to 5V to power the ESP32 (mounted on PCB underside) |
+| USB-C header cable | Box mounted |
+| Custom 3D printed enclosure | Print files included |
+
+---
+
+## Hardware Photos
+
 <img src=Attachments/IMG_1472.jpg width="50%"/>
 
 <img src=Attachments/IMG_1470.jpg width="50%"/>
@@ -31,17 +48,40 @@ This was designed for use in a mushroom grow operation in shipping containers wh
 
 <img src=Attachments/IMG_4527.jpeg width="50%"/>
 
-[Amazon link to cables below][def]
+---
+
+## Cable
+
+These fans use a USB-C style cable but carry PWM and tach signals — not USB data. The link below is for the correct cable type used in this project.
+
+[Amazon — USB-C Pigtail Extension Cable][cable]
 
 <img src=Attachments/cable.jpg width="50%"/>
 
-<img src=Attachments/IMG_4349.jpg width="50%"/> 
-Hole sizes for above cable mount
+<img src=Attachments/IMG_4349.jpg width="50%"/>
 
-## NodeRed (EC_Fan.json in NodeRed folder)
+*Hole sizes for the above cable mount*
+
+---
+
+## Getting Started
+
+1. Order the PCB using the included Gerber files (or build your own circuit)
+2. Print the enclosure using the included 3D files
+3. Flash the ESP32 using the example ESPHome YAML — edit `secrets.yaml` with your WiFi and MQTT credentials
+4. Connect the fan via USB-C cable
+5. Import the Node-RED flow (EC_Fan.json) into your Node-RED instance
+6. The fan will appear as an MQTT device and can be controlled from the Node-RED dashboard
+
+---
+
+## Node-RED Dashboard
+
+The included Node-RED flow provides a simple dashboard for controlling fan speed and monitoring RPM. Import `EC_Fan.json` from the NodeRed folder into your Node-RED instance.
+
 <img src=Attachments/IMG_4529.jpeg width="50%"/>
 <img src=Attachments/IMG_4531.jpeg width="50%"/>
 
-https://github.com/billjuv/EC_Fan_ESPHome/blob/main/README.md
+---
 
-[def]: https://www.amazon.com/Female-Waterproof-Terminal-Pigtail-Extension/dp/B0D7CN4BTV/ref=sr_1_1?crid=22DIPVZJ6NLNA&dib=eyJ2IjoiMSJ9.5A5gh8wlE1dA5xzyWRfnF6wJ0fd9cFGKaGoMoL32RONrxG9_nN8LmJ9rJli3ujotLw90tzZNpYxllE3eMCpda7KoQPOh_-vPp3rROVUxTw11IfYGYRkTlLA7TaCoP3jR.uXNtln_9dJgcMFb5AaFasS38uiNJQxI2SMAjDUyGoKk&dib_tag=se&keywords=xiwai%2B5pcs%2FSet&qid=1761968034&sprefix=xiwai%2B5pcs%2Fset%2Caps%2C101&sr=8-1&th=1
+[cable]: https://www.amazon.com/Female-Waterproof-Terminal-Pigtail-Extension/dp/B0D7CN4BTV/ref=sr_1_1?crid=22DIPVZJ6NLNA&dib=eyJ2IjoiMSJ9.5A5gh8wlE1dA5xzyWRfnF6wJ0fd9cFGKaGoMoL32RONrxG9_nN8LmJ9rJli3ujotLw90tzZNpYxllE3eMCpda7KoQPOh_-vPp3rROVUxTw11IfYGYRkTlLA7TaCoP3jR.uXNtln_9dJgcMFb5AaFasS38uiNJQxI2SMAjDUyGoKk&dib_tag=se&keywords=xiwai%2B5pcs%2FSet&qid=1761968034&sprefix=xiwai%2B5pcs%2Fset%2Caps%2C101&sr=8-1&th=1

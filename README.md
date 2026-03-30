@@ -2,9 +2,7 @@
 
 This project enables ESP32/WiFi control of 10V EC fans that use USB-C type cables, such as those made by AC Infinity (AIS) or Vivosun (SGS). A PWM signal (duty cycle) is sent to the fan to control speed, and if supported by the fan, the tach signal (RPM) is returned. 
 
-The ESP32 is powered directly from the 10V supplied by the fan through the USB-C cable and communicates with an MQTT broker via WiFi — no additional wiring is needed. 
-
-The boards provide voltage level shifting for safe use with Raspberry Pi GPIO pins or ESP32 pins, and support monitoring of tach signals (RPM) from compatible fans. The logic level shift circuitry used on this board are from [Kyle Gabriel's](https://github.com/kizniche) (Mycodo) fan control boards, modified for stand-alone use.
+The ESP32 is powered directly from the 10V supplied by the fan through the USB-C cable and communicates with an MQTT broker via WiFi — no additional wiring is needed. The logic level shift circuitry used on this board are from [Kyle Gabriel's](https://github.com/kizniche) (Mycodo) fan control boards, modified for stand-alone use.
 
 This was designed for a mushroom grow operation in shipping containers where WiFi control was preferred over long cable runs. The controller is a Raspberry Pi 4 running Mycodo, Mosquitto (MQTT broker), and Node-RED. Fan control is handled through a Node-RED Dashboard 2.0, though Mycodo could also be used.
 
@@ -91,6 +89,6 @@ The included Node-RED flow provides a simple dashboard for controlling fan speed
 ## Related Project
 
 For boards designed for controlling EC fans that use USB-C connectors for PWM speed control, see [EC_PWM_FanControlBoards](https://github.com/billjuv/EC_PWM_FanControlBoards) 
-They are modifications of [Kyle Gabriel's](https://github.com/kizniche) (Mycodo) fan control boards for TerraBloom EC fans, adapted to use USB-C connectors instead of audio connectors.
+They are modifications of [Kyle Gabriel's](https://github.com/kizniche) (Mycodo) fan control boards for TerraBloom EC fans, adapted to use USB-C connectors instead of audio connectors. The boards provide voltage level shifting for safe use with Raspberry Pi GPIO pins or ESP32 pins, and support monitoring of tach signals (RPM) from compatible fans. 
 
 ---

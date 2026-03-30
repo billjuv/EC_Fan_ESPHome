@@ -1,6 +1,3 @@
-# Sample yaml for PWM control of EC fan with tach - includes rssi and uptime
-# Need ESPHome 12-2024 or older for the PWM Fan - and the 'arduino' framework to work (11/25)
-
 substitutions:
   devicename: pwm-test-1
 
@@ -26,9 +23,20 @@ ota:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
+  power_save_mode: none
   ap:
     ssid: "${devicename} Fallback Hotspot"
     password: !secret ap_password
+  manual_ip:
+    static_ip: 10.0.1.219  # whatever IP the device already uses
+    gateway: 10.0.1.1
+    subnet: 255.255.255.0
+
+web_server:
+  port: 80
+
+api:
+  reboot_timeout: 0s
 
 captive_portal:
 
@@ -47,10 +55,10 @@ mqtt:
 output:
   - platform: ledc
     pin: GPIO26
-    frequency: 12000 Hz
+    frequency: 12000 Hz # Typical 25000
     id: fan_pwm
     min_power: 0.0
-    max_power: 0.96 # for AC Infinity clip fan
+    max_power: 0.96
     zero_means_zero: true
 
 # ---------------------------------------------------------------------------
@@ -72,23 +80,25 @@ sensor:
     id: fan_pulse
     unit_of_measurement: 'RPM'
     filters:
-      - multiply: 0.5 # two pulses per revolution
+      - multiply: 0.5
     count_mode:
       rising_edge: INCREMENT
-      falling_edge: DISABLE 
-    update_interval: 10s
+      falling_edge: DISABLE
+    update_interval: 5s
     on_value:
       then:
         - mqtt.publish:
             topic: "${devicename}/RPM"
             payload: !lambda 'return to_string(x);'
-   # state_topic: $devicename/RPM
-
 
   - platform: wifi_signal
     name: "WiFi Signal"
     update_interval: 60s
-    state_topic: $devicename/rssi
+    on_value:
+      then:
+        - mqtt.publish:
+            topic: "${devicename}/rssi"
+            payload: !lambda 'return to_string(x);'
 
   - platform: uptime
     name: "Uptime Sensor"
@@ -105,6 +115,7 @@ text_sensor:
     name: "Uptime Human Readable"
     id: uptime_human
     icon: "mdi:clock-start"
+    update_interval: 60s
     lambda: |-
       int s = (int) id(uptime_sensor).state;
       int d = s / 86400; s %= 86400;
@@ -113,4 +124,3 @@ text_sensor:
       char buf[32];
       sprintf(buf, "%dd %dh %dm %ds", d, h, m, s);
       return std::string(buf);
-

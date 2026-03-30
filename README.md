@@ -7,6 +7,21 @@ The ESP32 is powered directly from the 10V supplied by the fan through the USB-C
 This was designed for a mushroom grow operation in shipping containers where WiFi control was preferred over long cable runs. The controller is a Raspberry Pi 4 running Mycodo, Mosquitto (MQTT broker), and Node-RED. Fan control is handled through a Node-RED Dashboard 2.0, though Mycodo could also be used.
 
 ---
+## Overview
+
+You can safely control the PWM speed of EC fans supplied with 10VDC via USB-C cable — such as AC Infinity ("UIS") or Vivosun ("SGS") fans, and possibly others — without the need for proprietary controllers.
+
+### Tested and Verified
+
+| Fan | PWM Control | Tach (RPM) |
+|-----|-------------|------------|
+| AC Infinity Airlift S Series Shutter Fan | ✅ | ✅ |
+| AC Infinity Cloudray S6 6" Clip Fan | ✅ | ❌ |
+| Vivosun AeroWave E6 Gen2 6" Clip Fan | ✅ | ❌ (larger models unknown) |
+
+Testing was done using a Raspberry Pi 4 with Mycodo, and ESP32 boards with ESPHome and MQTT.
+
+---
 
 ## What's Included
 

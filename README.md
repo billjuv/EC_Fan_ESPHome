@@ -1,4 +1,4 @@
-# EC Fan Control using ESP32, ESPHome and MQTT
+# Fan-Powered EC Fan Control using ESP32, ESPHome and MQTT
 
 This project enables ESP32/WiFi control of 10V EC fans that use USB-C type cables, such as those made by AC Infinity (AIS) or Vivosun (SGS). A PWM signal (duty cycle) is sent to the fan to control speed, and if supported by the fan, the tach signal (RPM) is returned. 
 

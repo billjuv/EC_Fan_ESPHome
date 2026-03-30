@@ -42,7 +42,8 @@ Testing was done using a Raspberry Pi 4 with Mycodo, and ESP32 boards with ESPHo
 | ESP32 DevKit v1 | Chosen for stronger WiFi than the C3 variant |
 | MP1584EN DC-DC buck converter | Steps 10V down to 5V to power the ESP32 (mounted on PCB underside) |
 | USB-C header cable | Box mounted |
-| JST 2.0 4-pin header | Through-hole for above cable |
+| JST-PH 4-pin header | Through-hole for above cable |
+| Transisters 2N3904(2)  | Resistors - 1k(2),10k(2), 3.3k(1)
 | Custom 3D printed enclosure | Print files included |
 
 ---

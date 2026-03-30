@@ -8,7 +8,7 @@ This was designed for a mushroom grow operation in shipping containers where WiF
 
 ---
 
-> ⚠️ **Compatibility Note:** As of November 2024, this project requires **ESPHome 2024.12 or older** and the **Arduino framework**. It is not yet compatible with newer ESPHome versions.
+> ⚠️ **Compatibility Note:** This was developed using ESPHome 2024.11.4 and the Arduino framework. It has not yet been tested with newer ESPHome versions.
 
 ---
 

@@ -11,6 +11,7 @@ This was designed for a mushroom grow operation in shipping containers where WiF
 ## What's Included
 
 - ESPHome YAML configuration (example)
+- Schematic
 - Gerber files for the custom PCB
 - 3D print files for the enclosure
 - Links to parts
@@ -44,6 +45,8 @@ This was designed for a mushroom grow operation in shipping containers where WiF
 <img src=Attachments/IMG_1494.jpg width="50%"/>
 
 <img src=Attachments/IMG_4527.jpeg width="50%"/>
+
+<img src=Attachments/schematic.jpg width="80%"/>
 
 ---
 

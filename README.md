@@ -30,6 +30,7 @@ This was designed for a mushroom grow operation in shipping containers where WiF
 | ESP32 DevKit v1 | Chosen for stronger WiFi than the C3 variant |
 | MP1584EN DC-DC buck converter | Steps 10V down to 5V to power the ESP32 (mounted on PCB underside) |
 | USB-C header cable | Box mounted |
+| JST 2.0 4-pin header | Through-hole for above cable |
 | Custom 3D printed enclosure | Print files included |
 
 ---

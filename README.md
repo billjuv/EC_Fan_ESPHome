@@ -8,10 +8,6 @@ This was designed for a mushroom grow operation in shipping containers where WiF
 
 ---
 
-> ⚠️ **Compatibility Note:** This was developed using ESPHome 2024.11.4 and the Arduino framework. It has not yet been tested with newer ESPHome versions.
-
----
-
 ## What's Included
 
 - ESPHome YAML configuration (example)

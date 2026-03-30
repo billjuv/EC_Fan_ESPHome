@@ -1,6 +1,6 @@
 # EC Fan Control using ESP32, ESPHome and MQTT
 
-This project enables ESP32/WiFi control of 10V EC fans that use USB-C type cables, such as those made by AC Infinity (AIS) or Vivosun (SGS). A PWM signal (duty cycle) is sent to the fan to control speed, and if supported by the fan, the tach signal (RPM) is returned.
+This project enables ESP32/WiFi control of 10V EC fans that use USB-C type cables, such as those made by AC Infinity (AIS) or Vivosun (SGS). A PWM signal (duty cycle) is sent to the fan to control speed, and if supported by the fan, the tach signal (RPM) is returned. The logic level shift circuitry used on this board are from [Kyle Gabriel's](https://github.com/kizniche) (Mycodo) fan control boards, modified for stand-alone use.
 
 The ESP32 is powered directly from the 10V supplied by the fan through the USB-C cable and communicates with an MQTT broker via WiFi — no additional wiring is needed.
 
@@ -85,3 +85,10 @@ The included Node-RED flow provides a simple dashboard for controlling fan speed
 ---
 
 [cable]: https://www.amazon.com/Female-Waterproof-Terminal-Pigtail-Extension/dp/B0D7CN4BTV/ref=sr_1_1?crid=22DIPVZJ6NLNA&dib=eyJ2IjoiMSJ9.5A5gh8wlE1dA5xzyWRfnF6wJ0fd9cFGKaGoMoL32RONrxG9_nN8LmJ9rJli3ujotLw90tzZNpYxllE3eMCpda7KoQPOh_-vPp3rROVUxTw11IfYGYRkTlLA7TaCoP3jR.uXNtln_9dJgcMFb5AaFasS38uiNJQxI2SMAjDUyGoKk&dib_tag=se&keywords=xiwai%2B5pcs%2FSet&qid=1761968034&sprefix=xiwai%2B5pcs%2Fset%2Caps%2C101&sr=8-1&th=1
+
+## Related Project
+
+For a stand-alone boards adapted to use USB-C connectors, see the companion repository:
+[EC_PWM_FanControlBoards](https://github.com/billjuv/EC_PWM_FanControlBoards)
+
+---

@@ -47,6 +47,7 @@ mqtt:
   broker: !secret mqtt_host
   username: !secret mqtt_user
   password: !secret mqtt_password
+  discovery: true
   client_id: $devicename
 
 # ---------------------------------------------------------------------------

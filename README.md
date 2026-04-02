@@ -112,6 +112,6 @@ See the HA MQTT integration docs if you haven't set up MQTT in Home Assistant ye
 ## Related Project
 
 For boards designed for controlling EC fans that use USB-C connectors for PWM speed control, see [EC_PWM_FanControlBoards](https://github.com/billjuv/EC_PWM_FanControlBoards) 
-They are modifications of [Kyle Gabriel's](https://github.com/kizniche) (Mycodo) fan control boards for TerraBloom EC fans, adapted to use USB-C connectors instead of audio connectors. The boards provide voltage level shifting for safe use with Raspberry Pi GPIO pins or ESP32 pins, and support monitoring of tach signals (RPM) from compatible fans. 
+They are modifications of Kyle Gabriel's [Mycodo](https://github.com/kizniche) fan control boards for TerraBloom EC fans, adapted to use USB-C connectors instead of audio connectors. The boards provide voltage level shifting for safe use with Raspberry Pi GPIO pins or ESP32 pins, and support monitoring of tach signals (RPM) from compatible fans. 
 
 ---

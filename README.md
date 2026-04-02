@@ -1,6 +1,6 @@
 # Fan-Powered EC Fan Control using ESP32, ESPHome and MQTT
 
-This project enables ESP32/WiFi control of 10V EC fans that use USB-C type cables, such as those made by AC Infinity (UIS) or Vivosun (SGS). A PWM signal (duty cycle) is sent to the fan to control speed, and if supported by the fan, the tach signal (RPM) is returned. 
+This project enables ESP32/WiFi control of 10V EC fans that use USB-C type cables, such as those made by AC Infinity (UIS) or Vivosun (SGS). A PWM signal (duty cycle) is sent to the fan to control speed, and if supported by the fan, the tach signal (RPM) is returned. It was designed for use in a dual shipping container mushroom grow to eliminate long cables runs from a Mycodo controller to the fans.
 
 The ESP32 is powered directly from the 10V supplied by the fan through the USB-C cable and communicates with an MQTT broker via WiFi — no additional wiring is needed. The logic level shift circuitry used on this board are from Kyle Gabriel's [Mycodo](https://github.com/kizniche) fan control boards, modified for stand-alone use.
 
@@ -109,6 +109,12 @@ See the HA MQTT integration docs if you haven't set up MQTT in Home Assistant ye
 
 ---
 
+## Mycodo Integration
+
+I designed this device for use in a dual shipping container mushroom grow where we didn't want long cables running from the Mycodo controller to the fans.
+This can be integrated into [Mycodo](https://github.com/kizniche) using an Input Configuration: MQTT Suscribe (Value Payload) and setting the measurement setting for "Duty Cycle: Percent (%)" to get the duty cycle,  and an Output of PWM: MQTT Publish (paho-mqtt) to set the duty cycle.
+
+---
 ## Related Project
 
 For boards designed for controlling EC fans that use USB-C connectors for PWM speed control, see [EC_PWM_FanControlBoards](https://github.com/billjuv/EC_PWM_FanControlBoards) 

@@ -4,7 +4,7 @@ This project enables ESP32/WiFi control of 10V EC fans that use USB-C type cable
 
 The ESP32 is powered directly from the 10V supplied by the fan through the USB-C cable and communicates with an MQTT broker via WiFi — no additional wiring is needed. The logic level shift circuitry used on this board are from Kyle Gabriel's [Mycodo](https://github.com/kizniche) fan control boards, modified for stand-alone use.
 
-This was designed for a mushroom grow operation in shipping containers where WiFi control was preferred over long cable runs. The controller is a Raspberry Pi 4 running Mycodo, Mosquitto (MQTT broker), and Node-RED. Fan control is handled through a Node-RED Dashboard 2.0, though Mycodo or Home Assistant could also be used.
+This was designed for a mushroom grow operation in shipping containers where WiFi control was preferred over long cable runs. The controller is a Raspberry Pi 4 running Mosquitto (MQTT broker), Node-RED, InfluxDB, and Grafana. Fan control is handled from a mobile phone through a Node-RED Dashboard 2.0, though Mycodo or Home Assistant could also be used.
 
 ---
 ## Overview

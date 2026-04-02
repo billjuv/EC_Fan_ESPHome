@@ -102,6 +102,13 @@ The included Node-RED flow provides a simple dashboard for controlling fan speed
 
 [cable]: https://www.amazon.com/Female-Waterproof-Terminal-Pigtail-Extension/dp/B0D7CN4BTV/ref=sr_1_1?crid=22DIPVZJ6NLNA&dib=eyJ2IjoiMSJ9.5A5gh8wlE1dA5xzyWRfnF6wJ0fd9cFGKaGoMoL32RONrxG9_nN8LmJ9rJli3ujotLw90tzZNpYxllE3eMCpda7KoQPOh_-vPp3rROVUxTw11IfYGYRkTlLA7TaCoP3jR.uXNtln_9dJgcMFb5AaFasS38uiNJQxI2SMAjDUyGoKk&dib_tag=se&keywords=xiwai%2B5pcs%2FSet&qid=1761968034&sprefix=xiwai%2B5pcs%2Fset%2Caps%2C101&sr=8-1&th=1
 
+## Home Assistant Integration
+
+Since the ESP32 runs ESPHome with discovery: true in the MQTT configuration, the fan will appear automatically in Home Assistant as soon as the MQTT integration is configured — no configuration.yaml editing required. Speed control and RPM monitoring will be available as entities.
+See the HA MQTT integration docs if you haven't set up MQTT in Home Assistant yet.
+
+---
+
 ## Related Project
 
 For boards designed for controlling EC fans that use USB-C connectors for PWM speed control, see [EC_PWM_FanControlBoards](https://github.com/billjuv/EC_PWM_FanControlBoards) 

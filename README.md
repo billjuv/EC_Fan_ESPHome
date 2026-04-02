@@ -56,8 +56,6 @@ Testing was done using a Raspberry Pi 4 with Mycodo, and ESP32 boards with ESPHo
 
 <img src=Attachments/IMG_1470.jpg width="50%"/>
 
-<img src=Attachments/IMG_1486.jpg width="50%"/>
-
 <img src=Attachments/IMG_1493.jpg width="50%"/>
 
 <img src=Attachments/IMG_1494.jpg width="50%"/>

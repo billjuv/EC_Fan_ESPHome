@@ -112,7 +112,7 @@ See the HA MQTT integration docs if you haven't set up MQTT in Home Assistant ye
 ## Mycodo Integration
 
 I designed this device for use in a dual shipping container mushroom grow where we didn't want long cables running from the Mycodo controller to the fans.
-This can be integrated into [Mycodo](https://github.com/kizniche) using an Input Configuration: MQTT Suscribe (Value Payload) and setting the measurement setting for "Duty Cycle: Percent (%)" to get the duty cycle,  and an Output of PWM: MQTT Publish (paho-mqtt) to set the duty cycle.
+This can be integrated into [Mycodo](https://github.com/kizniche) using an Input Configuration: MQTT Suscribe (Value Payload) and setting the measurement setting as "Duty Cycle: Percent (%)" to get the duty cycle ( or "Revolutions: Revolutions per minute (rpm)" for fan speed), and an Output of PWM: MQTT Publish (paho-mqtt) to set the duty cycle and send it to mqtt.
 
 ---
 ## Related Project

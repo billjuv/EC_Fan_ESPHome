@@ -19,6 +19,7 @@ You can safely control the PWM speed of EC fans supplied with 10VDC via USB-C ca
 | AC Infinity Airlift S Series Shutter Fan | ✅ | ✅ |
 | AC Infinity Cloudray S6 6" Clip Fan | ✅ | ❌ |
 | Vivosun AeroWave E6 Gen2 6" Clip Fan | ✅ | ❌ (larger models unknown) |
+| AC Infinity CLOUDLINE S8 8" Inline Duct Fan | ✅ | ✅ |
 
 Testing was done using a Raspberry Pi 4 with Mycodo, and ESP32 boards with ESPHome and MQTT.
 

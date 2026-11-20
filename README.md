@@ -23,6 +23,7 @@ You can safely control the PWM speed of EC fans supplied with 10VDC via USB-C ca
 | Vivosun AeroWave E6 Gen2 6" Clip Fan | ✅ | ❌ (larger models unknown) |
 
 \* Tested and verified by others (Thanks). NOTE: Both of these fans give three pulses per revolution so change the multiplier for RPM in the YAML (line 84) to .333. Also NOTE that the fans I tested myself had the widest control at a frequency of 12000 Hz. Typical recommended frequency is 25000 Hz, so test what works best for you (line 59 in YAML).
+
 Testing was done using a Raspberry Pi 4 with Mycodo, and ESP32 boards with ESPHome and MQTT.
 
 ---

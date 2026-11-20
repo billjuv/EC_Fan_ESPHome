@@ -81,7 +81,7 @@ sensor:
     id: fan_pulse
     unit_of_measurement: 'RPM'
     filters:
-      - multiply: 0.5 #some fans use .33
+      - multiply: 0.5 #some fans have 3 pulses per revolution - use .333
     count_mode:
       rising_edge: INCREMENT
       falling_edge: DISABLE
